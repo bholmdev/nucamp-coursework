@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Timer Demo 2</title>
+    <style>
+        img {
+            position: absolute;
+            left: 0;
+            top: 100px;
+        }
+
+        #buttonOne {
+            position: absolute;
+            left: 0;
+            width: 120px;
+        }
+
+        #buttonTwo {
+            position: absolute;
+            left: 0;
+            top: 35px;
+            width: 120px;
+        }
+
+        #buttonThree {
+            position: absolute;
+            left: 0;
+            top: 61px;
+            width: 120px
+        }
+    </style>
+</head>
+<body onload="moveBanana()">
+    <img src="images/banana.png" alt="A yellow banana image" />
+    <button id="buttonOne" type="button" onclick="startBanana()">START BANANA</button>
+    <button id="buttonTwo"  type="button" onclick="clearTimeout(bananaTimer);">STOP BANANA</button>
+    <button id="buttonThree" type="button" onclick="resetBanana()">RESET BANANA</button>
+    <script>
+        let xPosition = 0;
+        let theBanana = document.querySelector('img');
+        let bananaTimer = 0;
+        function moveBanana() {
+            xPosition += 1;
+            theBanana.style.left = xPosition + 'px';
+            bananaTimer = setTimeout(moveBanana, 50);
+
+
+        }
+
+        function startBanana() {
+            xPosition += 1;
+            theBanana.style.left = xPosition + 'px';
+            bananaTimer = setTimeout(moveBanana, 10);
+        }
+
+        function resetBanana() {
+            theBanana.style.left = 0;
+            xPosition = 0
+        }
+    </script>
+</body>
+</html>
+
+<!-- 
+setTimout() - returns a numeric timer ID as it's return value - assign this to a variable:
+
+let timerID = setTimeout(aFunctionName(), waitDuration);
+
+Stop the timer with clearTimout() by giving it that specific timer ID
+
+clearTimout(timerID);
+ -->

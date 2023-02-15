@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body>
+    <span>DEMO</span>
+    <script>
+        const el = document.querySelector("span");
+        const bodyEl = document.querySelector("body");
+        el.addEventListener("mouseover", makeBlue);
+        el.addEventListener("mouseout", makeGreen);
+        elBody.addEvenListener("click", revertAll);
+
+        function makeBlue() {
+            el.style.background = "blue";
+            el.style.color = "red";
+        }
+
+        function makeGreen() {
+            el.style.background = "green";
+            el.style.color = "yellow";
+        }
+
+        function revertAll() {
+            document.bodyEl.style.background = "white";
+            document.bodyEl.styel.color = "black";
+        }
+    </script>
+</body>
+</html>

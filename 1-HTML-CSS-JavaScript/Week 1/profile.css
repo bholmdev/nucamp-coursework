@@ -1,0 +1,18 @@
+body {
+    font-family: 'Combo', cursive;
+    font-size: 40px;
+    text-align: center;
+    background-image: url(images/space.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: yellowgreen;
+}
+
+.myUl {
+    display: inline-block;
+    text-align: left;
+}
+
+a {
+    color: red;
+}

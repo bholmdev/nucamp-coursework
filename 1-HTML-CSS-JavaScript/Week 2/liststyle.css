@@ -1,0 +1,8 @@
+.exampleStyle {
+    list-style-type: square;
+}
+
+.example-PE::first-letter {
+    color: blue;
+    font-weight: bold;
+}

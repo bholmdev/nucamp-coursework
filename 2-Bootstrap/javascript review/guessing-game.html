@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        body {
+            margin: 1rem;
+        }
+
+        ol {
+            counter-reset: n;
+        }
+
+        ol > li {
+            list-style: none;
+            counter-increment: n;
+        }
+
+        ol > li::before {
+            content: "Challenge " counter(n) ":";
+            font-weight: bold;
+        }
+
+        .btn {
+            display: none;
+        }
+    </style>
+
+    <title>Guessing Game</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row align-items-center mb-2">
+            <div class="col-sm-2">
+                My guess is... 
+            </div>
+            <div class="col">
+                <button class="btn btn-primary" id="startBtn">?</button>
+                <button class="btn btn-primary" id="guessBtn"></button>
+                <button class="btn btn-danger" id="resetBtn">Restart?</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p id="instructions">Think of a number between 1-100 and click the blue button when you're ready.</p>
+                <p id="guessCount"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="btn-group" role="group">
+                    <button id="yesBtn" class="btn btn-success">Yes</button>
+                    <button id="noBtn" class="btn btn-warning">No</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button id="higherBtn" class="btn btn-dark">Higher</button>
+                    <button id="lowerBtn" class="btn btn-light">Lower</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Explanation -->
+    <hr />
+    <p>This game demonstrates a classic programming algorithm: <strong>binary search</strong>. When tasked with finding a number within a range using binary search, the computer will always guess in the middle of the range. By using this algorithm, it will find your number in 7 or less tries every time (for 100 numbers) -- a vast performance improvement over a random or sequential search.</p>
+    <p>Take time to read over the code and play the game several times to make sure you understand its flow before you begin the tasks for this assignment.</p>
+    
+    <h3>Code Challenge</h3>
+    <ol>
+        <li> You will use Bootstrap to adjust the user interface. For this task, you will only need to update code in the HTML section. 
+            <ul>
+                <li>First, use a Bootstrap class to <strong>vertically</strong> align the text <strong>"My guess is"</strong> in the row so that it is <strong>centered</strong> instead of top aligned.</li>
+                <li>Next, modify the column class for the first column in the first row of the grid so that it spans across <strong>2 out of the 12</strong> columns of the row for <strong>small and up</strong> viewports. The two columns in the row should stack vertically for <strong>XS viewports</strong>.</li>
+                <li>Lastly, using a Bootstrap <strong>spacing utility class</strong>, give the first row a Bootstrap class that will <strong>increase the bottom margin of the row</strong>, as seen in the screenshot.</li>
+            </ul>
+        <li> When the game is finished, add a way to <strong>reset</strong> the game. Add a "Reset" button that only appears once the correct guess has been made, and when it's clicked, cause it to reset to the very beginning setup where it says 'Think of a number between 1-100 and click the blue button when you're ready.' Do not use the .reload() method for this task. Instead, within the reset function, use the provided <strong>toggleBtn()</strong> function to set the correct states for the buttons. Also reset the game variables to their initial values. For this task, you will need to update code in the JavaScript and HTML sections.</li>
+        <li>
+    Right now, if you were to just keep clicking that the guess is incorrect, it would go forever. Can you update this game so that it can evaluate whether you are giving it nonsensical answers?
+        </li>
+    </ol>
+    
+        <p><strong>Bonus Challenge</strong>: Can you find any other ways to improve and/or further extend this starter code? There is no one right answer to this challenge, it's just meant to ask you to think critically and experiment with what you have learned. It could be anything from improving the logical structure to adding a cool animation or image when the correct answer is guessed, or replacing the jQuery event handling with vanilla JS instead, or continuously displaying the current number of guesses, or whatever else you can imagine.</p>
+        
+    <h3>Resources</h3>
+    <ul>
+        <li><a href="https://getbootstrap.com/docs/4.0/layout/grid" target="_blank">Bootstrap Grid</a></li>
+        <li><a href="https://getbootstrap.com/docs/4.0/components/collapse/#via-javascript" target="_blank">Bootstrap Collapse - via JavaScript</a></li>
+        <li><a href="https://www.w3schools.com/jsref/met_element_addeventlistener.asp" target="_blank">W3Schools - addEventListener</a></li>
+        <li><a href="https://www.w3schools.com/jsref/prop_pushbutton_disabled.asp" target="_blank">W3Schools - disabled button property</a></li>    
+    </ul>
+        
+    <!-- original codepen by minae lee -->
+    <!-- note: this codepen uses bootstrap CSS and JS files linked in the settings -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        let max = 100;
+        let min = 1;
+        let nGuesses = 0;
+        let currGuess = 0;
+
+        /* getElementById would be fine to use below as well instead of querySelector */
+        const yesBtn = document.querySelector("#yesBtn");
+        const noBtn = document.querySelector("#noBtn");
+        const higherBtn = document.querySelector("#higherBtn");
+        const lowerBtn = document.querySelector("#lowerBtn");
+        const startBtn = document.querySelector("#startBtn");
+        const guessBtn = document.querySelector("#guessBtn");
+        const message = document.querySelector("#instructions");
+        const scoreMessage = document.querySelector("#guessCount");
+        const resetBtn = document.querySelector("#resetBtn");
+
+        startBtn.addEventListener("click", tryGuess);
+        yesBtn.addEventListener("click", rightGuess);
+        noBtn.addEventListener("click", wrongGuess);
+        higherBtn.addEventListener("click", numIsHigher);
+        lowerBtn.addEventListener("click", numIsLower);
+        resetBtn.addEventListener("click", reset);
+
+        toggleBtns([startBtn], true);
+        
+        scoreMessage.textContent = "The current guess number is: " + nGuesses;
+        
+
+        function tryGuess(){ 
+            if (!nGuesses) { // first time guessing
+                toggleBtns([startBtn], false);
+                toggleBtns([guessBtn], true);
+            }
+            nGuesses++;    
+            currGuess = Math.floor((max - min)/2) + min;
+            console.log(`Guessing between ${min} and ${max} - guessing ${currGuess} - this is guess number ${nGuesses}`);
+            guessBtn.textContent = currGuess + "!";
+            message.textContent = "Am I correct?";
+            scoreMessage.textContent = "The current guess number is: " + nGuesses;
+            toggleBtns([yesBtn, noBtn], true);
+        }
+
+        function toggleBtns(btnsArray, on) { 
+            for (const btn of btnsArray) {
+                if (on) {
+                    btn.style.display = "inline-block"; 
+                } else {
+                    btn.style.display = "none";
+                }
+            }
+        }
+
+        function rightGuess() {
+            toggleBtns([yesBtn, noBtn], false);
+            message.textContent = `I guessed your number in ${nGuesses} tries!`;
+            toggleBtns([resetBtn], true);
+        }
+
+        function wrongGuess() {
+            if (currGuess < max || currGuess > min) {
+                toggleBtns([yesBtn, noBtn], false);
+                toggleBtns([higherBtn, lowerBtn], true);
+                message.textContent = `Is your number higher or lower than ${currGuess}?`;
+            } else {
+                toggleBtns([resetBtn], true);
+                message.textContent = "What are you trying to pull?!";
+                toggleBtns([higherBtn], false);
+                toggleBtns([lowerBtn], false);
+                toggleBtns([guessBtn], false);
+                toggleBtns([yesBtn], false);
+                toggleBtns([noBtn], false);
+            }
+            
+        } 
+        
+        function numIsHigher() {
+            min = currGuess + 1;
+            console.log("Changing the minimum to: " + min);
+            toggleBtns([higherBtn, lowerBtn], false);
+            tryGuess();
+        }
+
+        function numIsLower() {
+            max = currGuess - 1;
+            console.log("Changing the maximum to: " + max);
+            toggleBtns([higherBtn, lowerBtn], false);
+            tryGuess();
+        }
+
+        function reset() {
+            toggleBtns([resetBtn], false);
+            toggleBtns([guessBtn], false);
+            toggleBtns([higherBtn], false);
+            toggleBtns([lowerBtn], false);
+            toggleBtns([yesBtn], false);
+            toggleBtns([noBtn], false);
+            max = 100;
+            min = 1;
+            nGuesses = 0;
+            currGuess = 0;
+            message.textContent = "Think of a number between 1-100 and click the blue button when you're ready.";
+            scoreMessage.textContent = "The current guess number is: " + nGuesses + ".";
+            toggleBtns([startBtn], true);
+        }
+    </script>
+</body>
+</html>
+
+<!--if (currGuess === max && currGuess === min) {
+    toggleBtns([higherBtn], false);
+    toggleBtns([lowerBtn], false);
+    toggleBtns([guessBtn], false);
+    toggleBtns([resetBtn], true);
+    message.textContent = "What are you trying to pull?!";
+    
+}

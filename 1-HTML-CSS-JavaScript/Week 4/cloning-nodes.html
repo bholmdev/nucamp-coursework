@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Cloning Nodes Demo</title>
+    <style>
+        body {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="myList">
+        <li>Red</li>
+        <li>Green</li>
+        <li>Blue</li>
+    </ul>
+
+    <button type="button" onclick="cloneListItem()">Copy just the last listitem</button>
+    <button type="button" onclick="cloneListItemBranch()">Copy the last listitem and its branch</button>
+
+    <script>
+        const listNode = document.querySelector('#myList');
+        const nodeToCopy = listNode.lastElementChild;
+        //const nodeToCopy = listNode;
+
+        function cloneListItem() {
+            const copy = nodeToCopy.cloneNode();
+            //listNode.append(copy);
+            listNode.appendChild(copy);
+        }
+
+        function cloneListItemBranch() {
+            const copy = nodeToCopy.cloneNode(true);
+            document.body.append(copy);
+            //document.body.insertBefore(copy, document.body.firstChild);
+        }
+    </script>
+</body>
+</html>
+
+<!-- cloneNode() - You must have a reference to the node to clone
+
+const newNode = nodeToClone.cloneNode();
+
+cloneNode(True) - Pass teh Boolean value true as an argument
+
+const newNode = nodeToClone.cloneNode(true);
+
+lastElemenChild - Like firstChild/firstElementChild, this node property is a version of lastChild for elements only - skips text and other types of nodes.
+
+parentNode.lastElementChild
+-->

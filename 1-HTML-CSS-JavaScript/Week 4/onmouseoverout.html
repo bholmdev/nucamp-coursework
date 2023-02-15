@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" onclick="originalBackground();">
+<head>
+    <meta charset="utf-8" />
+    <title>Onmouseover & Onmouseout Demo</title>
+    <style>
+        div {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div id="changeWhite" onmouseover="changeBackground('red');" onmouseout="changeBackground('yellow');">
+        Move your mouse over this text, then move it out
+    </div>
+
+    <script>
+        function changeBackground(newColor) {
+            document.getElementsByTagName('div')[0].style.background = newColor;
+        }
+
+        function originalBackground() {
+            document.querySelector('#changeWhite').style.background = 'white';
+        }
+    </script>
+</body>
+</html>
+
+<!-- onmouseover - start hovering over an element with your mouse
+onmouseout - move off the element that you are hovering over
+-->

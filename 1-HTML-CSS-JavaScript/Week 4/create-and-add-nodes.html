@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Create and Add Nodes Demo</title>
+    <style>
+        p {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <p id="firstP" onclick="insertNewElement()">Click this text to insert a new hr element to the page</p>
+
+    <p id="secondP" onclick="insertNewText()">Click this text to append a new text child node to the page</p>
+
+    <script>
+        function insertNewElement() {
+            const newEl = document.createElement('hr');
+            const parentNode = document.querySelector('#firstP');
+            parentNode.insertBefore(newEl, parentNode.firstChild);
+        }
+
+        function insertNewText() {
+            const newText = document.createTextNode('. This is dynamically added text!');
+            const parentNode = document.querySelector('#secondP');
+            parentNode.appendChild(newText);
+        }
+    </script>
+</body>
+</html>
+
+<!-- insertBefore() = a node method, you must use it on and existing node.
+First figure out and exisiting node in the DOM to act as the parent node for the node to insert.
+
+parentNode.insertBefore(newEl, parentNode.firstChild)
+-->
+
+<!-- appendChild() = Another node method to add a node to an existing DOM.  You need to locate a node to act as the parent
+
+parentNode.appendChild(newText);
+-->

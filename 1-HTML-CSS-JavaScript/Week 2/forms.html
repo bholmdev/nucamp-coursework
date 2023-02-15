@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forms</title>
+    <link rel="stylesheet" href="forms.css">
+</head>
+<body>
+    <form>
+        <input type="text">
+        <input type="submit" value="Go">
+    </form>
+    <br>
+    <form action="https://learn.nucamp.co/show_everything.php" method="post">
+        Enter your avatar name:
+        <input type="text" name="avatarName" value="Go">
+        <input type="submit" value="Go">
+    </form>
+    <br>
+    <form>
+        Enter your avatar name:
+        <input type="text" name="avatarName" placeholder="Enter your Avatar Name">
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+    <div>
+        Delivery? <input type="checkbox" name="delivery">
+    </div>
+    <div>
+        Milk <input type="checkbox" name="groceries" value="milk">
+        Eggs <input type="checkbox" name="groceries" value="eggs">
+        Bread <input type="checkbox" name="groceries" value="bread">
+    </div>
+    <div>
+        Pay by Cash <input type="radio" name="payment" value="cash" required>
+        Pay by Check <input type="radio" name="payment" value="check">
+    </div>
+    <div>
+    <input type="submit" value="Submit">
+    </div>
+    <br>
+    <form action="handlform.php" method="post" enctype="multipart/form-data">
+        <div>
+            <input type="range" name="myRating" min="1" max="10">    
+        </div>
+        <div>
+            <input type="color" name="myColor">
+        </div>
+        <div>
+            Choose a file: <input type="file" name="myFile">
+        </div>
+    </form>
+</body>
+</html>

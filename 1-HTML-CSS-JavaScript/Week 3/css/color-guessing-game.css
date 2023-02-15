@@ -1,0 +1,22 @@
+button {
+    background-color: green;
+    width: 200px;
+    height: 200px;
+    align-content: center;
+    position: relative;
+    left: 45%;
+}
+
+button:hover {
+    background-color: purple;
+}
+
+body {
+    background-image: linear-gradient(to bottom right, #2193b0, #6dd5ed);
+    background-repeat: no-repeat;
+    height: 1000px;
+  }
+
+  h1 {
+    text-align: center;
+  }

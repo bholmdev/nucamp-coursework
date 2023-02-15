@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Color Guessing Game</title>
+    
+</head>
+<body id="grad">
+    <h1>Color Guessing Game</h1>
+    <button type="button" onclick="runGame()">Click Me</button>
+    <script>
+        const COLORS_ARRAY = ['blue', 'cyan', 'gold', 'gray', 'green', 'magenta', 'orange', 'white', 'red', 'yellow']
+
+        function runGame() {
+        let guessStr = "";
+        let guess = guessStr.toLowerCase();
+        let correct = false;
+        let numTries = 0;
+        const targetIndex = Math.floor(Math.random() * COLORS_ARRAY.length);
+        const target = COLORS_ARRAY[targetIndex];
+        console.log(target);
+
+        do {
+            let sortedArray = COLORS_ARRAY.sort();
+            guess = prompt('I am thinking of one of these colors:\n\n' + sortedArray.join(", ") +
+'\n\nWhat color am I thinking of?\n');
+            numTries +=1;
+            alert("You have tried " + numTries + " times.")
+            if (guess === null) {
+                alert("Please try again.");
+                return;
+            }
+            correct = checkGuess(guess, target);
+        } while (!correct);
+
+        alert("Congratulations you got it correct!\nYou got the answer in " + numTries + " tries.");
+        document.body.style.background = guess;
+        }
+
+        function checkGuess(guess, target) { //starts function
+            let correct = false;  /* By creating this variable correct is declared as false and will only change to true if a certain action, that you state, has been performed. */
+            if (!COLORS_ARRAY.includes(guess)) { /* Starts if statement. In this instance we use a non-equality to say "If the guess does not include any of the strings in the COLORS_ARRAY array then you will perform the child action. (child action is below)*/
+                alert("Please enter an appropriate color from the given list."); /* Alert created a pop up in a web page.  In this case it will tell the player to enter an appropriate color from the given list included in the COLORS_ARRAY array. */
+            } else if (guess > target) { /* else if statements will run if the first if or else if statemetn above is not true. In this case it will pop up a message that says "Sorry, your answer is alpabetically higher than the answer." */
+                alert("Sorry, your answer is alphabetically higher than the answer.");  /* This is another pop up alert.  If the parent else if statement is true, then this will pop up the text "Sorry, your answer is alphabetically higher than the answer." */
+            } else if (guess < target) {  /* You can have as many else if statements as needed.  This is the same concept as above.  If the guess is not alphabetically greater than the target answer this code will run.  If guess is alphabetically lower than the target answer. */
+                alert("Sorry, your answer is alphabetically lower than the answer.");  /* This is another pop up alert.  If the parent else if statement is true, then this will pop up the text "Sorry, your answer is alphabetically lower than the answer." */
+            } else { /* Else, while not requred, will end your conditional statments and you can provide an action if any of the if or else if statements are not true. */
+                correct = true;  /* This will change the variable correct from falst to true if none of the if or else if statements are true. */
+            } /* Ends conditional statement. */
+            return correct;
+        }// ends function
+    </script>
+</body>
+</html>

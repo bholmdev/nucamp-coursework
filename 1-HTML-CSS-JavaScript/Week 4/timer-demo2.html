@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Timer Demo 2</title>
+    <style>
+        img {
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body onload="moveBanana()">
+    <img src="images/banana.png" alt="A yellow banana image" />
+    <script>
+        let xPosition = 0;
+        let theBanana = document.querySelector('img');
+        function moveBanana() {
+            xPosition += 1;
+            theBanana.style.left = xPosition + 'px';
+            setTimeout(moveBanana, 50);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Onclick Demo</title>
+</head>
+<body>
+    <h1 onclick="changeBackground();">Click Me</h1>
+
+    <script>
+        function changeBackground() {
+            const h1 = document.getElementsByTagName('h1')[0];
+            h1.style.background = 'orange';
+        }
+    </script>
+</body>
+</html>
+
+<!-- onclick - When used from inside HTML, these are called inline event handlers.  
+    
+Set as an attribute of any clickable HTML element. 
+
+Runs the JavaScript in the attribute value anytime the element it is set on is clicked.
+
+Typically, use it to call a function
+
+<h1
+onclick="changeBackgroun()">Click Me</h1>
+-->
